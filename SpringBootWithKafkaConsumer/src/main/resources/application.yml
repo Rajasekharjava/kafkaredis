@@ -1,0 +1,36 @@
+server:
+  port: 8082
+  
+spring:
+  application:
+    name: SpringBootKafkaConsumer
+
+  kafka:
+   template:
+      default-topic: library-events
+   consumer:
+      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: library-group
+      
+      
+      
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/raja
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate.dialect : org.hibernate.dialect.MySQL57Dialect
+      
+      
+      
+      
